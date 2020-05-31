@@ -56,7 +56,7 @@ public class Application {
         // We start by creating a new web3j instance to connect to remote nodes on the network.
         // Note: if using web3j Android, use Web3jFactory.build(...
         Web3j web3j = Web3j.build(new HttpService(
-                "https://rinkeby.infura.io/<your token>"));  // FIXME: Enter your Infura token here;
+                "http://13.57.207.168:3435"));  // Added Freight Trust Network RPC (regular old' http)
         log.info("Connected to Ethereum client version: "
                 + web3j.web3ClientVersion().send().getWeb3ClientVersion());
 
@@ -76,7 +76,7 @@ public class Application {
                 "0x19e03255f667bdfd50a32722df860b1eeaf4d635",  // you can put any address here
                 BigDecimal.ONE, Convert.Unit.WEI)  // 1 wei = 10^-18 Ether
                 .send();
-        log.info("Transaction complete, view it at https://rinkeby.etherscan.io/tx/"
+        log.info("Transaction complete, view it at https://0xfreight.com/tx/" // changed to 0xfreight.com
                 + transferReceipt.getTransactionHash());
 
         // Now lets deploy a smart contract
@@ -91,7 +91,7 @@ public class Application {
 
         String contractAddress = contract.getContractAddress();
         log.info("Smart contract deployed to address " + contractAddress);
-        log.info("View contract at https://rinkeby.etherscan.io/address/" + contractAddress);
+        log.info("View contract at http://0xfreight.com/address" + contractAddress); //changed to 0xfreight.com
 
         log.info("Value stored in remote smart contract: " + contract.greet().send());
 
